@@ -1,0 +1,41 @@
+service: cognito
+
+provider:
+  name: aws
+  stage: ${opt:stage, "dev"}
+  region: ${opt:region, "us-east-1"}
+
+resources:
+  Resouces:
+    CognitoUserPool:
+      Type: AWS::Cognito::UserPool
+      Properties:
+        AutoVerifiedAttributes:
+          - email
+        UsernameAttributes:
+          - email
+        UserPoolName: cognito-apigateway
+
+    CognitoUserPoolClient:
+      Type: AWS::Cognito::UserPoolClient
+      Properties:
+        ClientName: cognito-apigateway
+        ExplicitAuthFlows:
+          - ALLOW_USER_PASSWORD_AUTH
+          - ALLOW_REFRESH_TOKEN_AUTH
+        UserPoolId: 
+          Ref: UserPool
+
+# Exporting stack value
+  Outputs:
+    UserPoolId:
+      Value:
+        Ref: CognitoUserPool
+      Export:
+          Name: ${self:service}-${self:provider.stage}-UserPoolId
+
+    UserPoolClient:
+      Value:
+        Ref: CognitoUserPoolClient
+      Export:
+          Name: ${self:service}-${self:provider.stage}-UserPoolClient

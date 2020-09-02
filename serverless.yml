@@ -1,0 +1,92 @@
+service: books-api
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, "dev"}
+  region: ${opt:region, "us-east-1"}
+  profile: ${opt:profile, "nadtakan"}
+  environment:
+    booksTableName: ${self:custom.booksTableName}
+
+# custom values section
+custom:
+  booksTableName: books-${self:custom.stage}
+
+functions:
+  # Defines an HTTP API endpoint that calls the main function in book/create.js
+  # - path: url path is /books
+  # - method: POST request
+  # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
+  #     domain api call
+  # - authorizer: authenticate using Cognito
+  book-create:
+    handler: book/create.handler
+    events:
+      - http:
+          path: books
+          method: post
+          cors: true
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:#{AWS::Region}:#{AWS::AccountId}:userpool/us-east-1_XXXXXX
+
+  # Defines an HTTP API endpoint that calls the main function in book/get.js
+  # - path: url path is /books/{ISBN}
+  # - method: GET request
+  # - authorizer: authenticate using Cognito
+  book-get:
+    handler: book/get.handler
+    events:
+      - http:
+          path: books/{ISBN}
+          method: get
+          cors: true
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:#{AWS::Region}:#{AWS::AccountId}:userpool/us-east-1_XXXXXX
+
+  # Defines an HTTP API endpoint that calls the main function in list.js
+  # - path: url path is /books
+  # - method: GET request
+  # - authorizer: authenticate using Cognito
+  book-list:
+    handler: book/list.handler
+    events:
+      - http:
+          path: books
+          method: get
+          cors: true
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:#{AWS::Region}:#{AWS::AccountId}:userpool/us-east-1_XXXXXX
+
+  # Defines an HTTP API endpoint that calls the main function in delete.js
+  # - path: url path is /books/{ISBN}
+  # - method: DELETE request
+  # - authorizer: authenticate using Cognito
+  book-update:
+    handler: book/update.handler
+    events:
+      - http:
+          path: books/{ISBN}
+          method: put
+          cors: true
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:#{AWS::Region}:#{AWS::AccountId}:userpool/us-east-1_XXXXXX
+  
+  book-delete:
+    # Defines an HTTP API endpoint that calls the main function in delete.js
+    # - path: url path is /books/{id}
+    # - method: DELETE request
+    # - authorizer: authenticate using Cognito
+    handler: book/delete.handler
+    events:
+      - http:
+          path: books/{id}
+          method: delete
+          cors: true
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:#{AWS::Region}:#{AWS::AccountId}:userpool/us-east-1_XXXXXX

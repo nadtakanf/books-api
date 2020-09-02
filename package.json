@@ -1,0 +1,25 @@
+{
+  "name": "books_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "deploy": "sls deploy -v",
+    "deploy:dynamodb": "sls deploy -v"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.741.0",
+    "serverless-pseudo-parameters": "^2.5.0",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@shelf/jest-dynamodb": "^1.7.0",
+    "jest": "^26.4.2"
+  },
+  "jest": {
+    "preset": "@shelf/jest-dynamodb"
+  }
+}
