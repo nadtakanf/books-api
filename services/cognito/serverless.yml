@@ -4,9 +4,10 @@ provider:
   name: aws
   stage: ${opt:stage, "dev"}
   region: ${opt:region, "us-east-1"}
+  profile: ${opt:profile, "nadtakan"}
 
 resources:
-  Resouces:
+  Resources:
     CognitoUserPool:
       Type: AWS::Cognito::UserPool
       Properties:
@@ -23,19 +24,19 @@ resources:
         ExplicitAuthFlows:
           - ALLOW_USER_PASSWORD_AUTH
           - ALLOW_REFRESH_TOKEN_AUTH
-        UserPoolId: 
-          Ref: UserPool
+        UserPoolId:
+          Ref: CognitoUserPool
 
-# Exporting stack value
+  # Exporting stack value
   Outputs:
     UserPoolId:
       Value:
         Ref: CognitoUserPool
       Export:
-          Name: ${self:service}-${self:provider.stage}-UserPoolId
+        Name: ${self:service}:${self:provider.stage}:UserPoolId
 
     UserPoolClient:
       Value:
         Ref: CognitoUserPoolClient
       Export:
-          Name: ${self:service}-${self:provider.stage}-UserPoolClient
+        Name: ${self:service}:${self:provider.stage}:UserPoolClient
