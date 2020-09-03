@@ -1,14 +1,15 @@
-'use strict';
+"use strict";
 
 const { success, failure } = require("../../helper/response-lib");
 
-module.exports.handler = async event => {
-	const params = {
+module.exports.handler = async (event) => {
+	
+  const params = {
     TableName: process.env.booksTableName,
     KeyConditionExpression: "ISBN = :ISBN",
     ExpressionAttributeValues: {
-      ":ISBN": event.params.ISBN
-    }
+      ":ISBN": event.pathParameters.ISBN,
+    },
   };
 
   try {
@@ -16,7 +17,7 @@ module.exports.handler = async event => {
     // Return the matching list of items in response body
     return success(result.Items);
   } catch (e) {
-		console.log(e);
+    console.log(e);
     return failure({ status: false });
   }
 };

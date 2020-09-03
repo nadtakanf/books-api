@@ -1,18 +1,22 @@
-export function success(body) {
-  return buildResponse(200, body);
-}
+const response = {}
 
-export function failure(body) {
-  return buildResponse(500, body);
-}
+response.success = ((body) => {
+	return response.buildResponse(200, body)
+})
 
-function buildResponse(statusCode, body) {
-  return {
-    statusCode: statusCode,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
+response.failure = ((body) => {
+	return response.buildResponse(500, body)
+})
+
+response.buildResponse = ((statusCode, body) => {
+	return {
+		statusCode: statusCode,
+		headers: {
+			"Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": true
-    },
-    body: JSON.stringify(body)
-  };
-}
+		},
+		body: body
+	}
+})
+
+module.exports = response

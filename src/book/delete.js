@@ -1,13 +1,18 @@
-'use strict';
+"use strict";
 
 const { success, failure } = require("../../helper/response-lib");
 
-module.exports.handler = async event => {
-	const params = {
+module.exports.handler = async (event) => {
+	
+	if(event.pathParameters.ISBN) {
+		throw new Error('Missing event body');
+	}
+
+  const params = {
     TableName: process.env.booksTableName,
     Key: {
-      ISBN: event.pathParameters.ISBN
-    }
+      ISBN: event.pathParameters.ISBN,
+    },
   };
 
   try {
