@@ -48,8 +48,8 @@ Todos:
 	6. Adding local server for testing using express and nodemon. (Example: local_server)
 
 ## Resources
-[Use jest-dynamodb](https://jestjs.io/docs/en/dynamodb)
-[Javascript Best Practices](https://github.com/goldbergyoni/javascript-testing-best-practices/blob/master/readme.md#section-5%EF%B8%8F%E2%83%A3-ci-and-other-quality-measures)
-[Serverless Pseudo Parameters](https://www.serverless.com/plugins/serverless-pseudo-parameters)
-[Serverless Stack](https://serverless-stack.com/)
-[Using Global Secondary Indexes in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)
+* [Use jest-dynamodb](https://jestjs.io/docs/en/dynamodb)
+* [Javascript Best Practices](https://github.com/goldbergyoni/javascript-testing-best-practices/blob/master/readme.md#section-5%EF%B8%8F%E2%83%A3-ci-and-other-quality-measures)
+* [Serverless Pseudo Parameters](https://www.serverless.com/plugins/serverless-pseudo-parameters)
+* [Serverless Stack](https://serverless-stack.com/)
+* [Using Global Secondary Indexes in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)
