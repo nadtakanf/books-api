@@ -22,7 +22,7 @@ Project is created with:
 * [Prettier](https://prettier.io/)
 	
 ## Setup
-1. To run this project, install it locally using npm:
+1. Install npm package run,
 
 ```
 $ npm install
@@ -45,7 +45,6 @@ Todos:
 * Set up prettier to [Git hooks](https://prettier.io/docs/en/install.html)
 * Creating CRUD functionality for Authors table and has relationship back with books table
 * Using Global Secondary Indexes in DynamoDB to support filter by publication or author
-* Adding local server for testing using express and nodemon. (Example: local_server)
 * Config route53 and API gateway 
 * Adding SQS to yml file
 
