@@ -40,7 +40,7 @@ $ npm run deploy:dynamodb <region>
 ```
 
 Todos:
-	1. Deploying code to aws using Serverless Framework
+	1. Grouping duplicate code to helper folder
 	2. Creating integration & acceptance test [Example](https://github.com/nadtakanf/big-mouth)
 	3. Set up prettier to [Git hooks](https://prettier.io/docs/en/install.html)
 	4. Creating CRUD functionality for Authors table and has relationship back with books table
