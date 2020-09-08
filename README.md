@@ -40,12 +40,14 @@ $ npm run deploy:dynamodb <region>
 ```
 
 Todos:
-* 1. Grouping duplicate code to helper folder
-* 2. Creating integration & acceptance test [Example](https://github.com/nadtakanf/big-mouth)
-* 3. Set up prettier to [Git hooks](https://prettier.io/docs/en/install.html)
-* 4. Creating CRUD functionality for Authors table and has relationship back with books table
-* 5. Using Global Secondary Indexes in DynamoDB to support filter by publication or author
-* 6. Adding local server for testing using express and nodemon. (Example: local_server)
+* Grouping duplicate code to helper folder
+* Creating integration & acceptance test [Example](https://github.com/nadtakanf/big-mouth)
+* Set up prettier to [Git hooks](https://prettier.io/docs/en/install.html)
+* Creating CRUD functionality for Authors table and has relationship back with books table
+* Using Global Secondary Indexes in DynamoDB to support filter by publication or author
+* Adding local server for testing using express and nodemon. (Example: local_server)
+* Config route53 and API gateway 
+* Adding SQS to yml file
 
 ## Resources
 * [Use jest-dynamodb](https://jestjs.io/docs/en/dynamodb)
