@@ -53,7 +53,7 @@ After deploy cognito, we have to create a user account and steps are below.
 * Creating an account in Cognito
 * ``` aws cognito-idp sign-up --region us-east-1 --client-id 7aqsqmf8v93bli7iduivba7iee --username nadtakan.jones@gmail.com --password Password123! ```
 * And confirm your account by runing command below
-* ``` aws cognito-idp admin-confirm-sign-up --profile nadtakan --region us-east-1 --user-pool-id us-east-1_JrhuNai6v --username nadtakan.jones@gmail.com ```
+* ``` aws cognito-idp admin-confirm-sign-up --region us-east-1 --user-pool-id us-east-1_JrhuNai6v --username nadtakan.jones@gmail.com ```
 * After confirm your account, we are going to use aws cli command to get idToken from cognito
 * Replacing values inside user.json(UserPoolId, ClientId, Username, Password)
 * Run ``` aws cognito-idp admin-initiate-auth --region {your-aws-region} --cli-input-json file://auth.json```
