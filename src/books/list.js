@@ -1,6 +1,7 @@
 "use strict";
 
 const { success, failure } = require("../../helper/response-lib");
+const libs = require("../../helper/dynamodb-lib")
 
 module.exports.handler = async (event) => {
 	
@@ -13,7 +14,7 @@ module.exports.handler = async (event) => {
   };
 
   try {
-    const result = await dynamoDbLib.call("query", params);
+    const result = await libs.call("query", params);
     // Return the matching list of items in response body
     return success(result.Items);
   } catch (e) {

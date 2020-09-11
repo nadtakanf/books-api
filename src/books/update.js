@@ -1,9 +1,10 @@
 "use strict";
 
 const { success, failure } = require("../../helper/response-lib");
+const libs = require("../../helper/dynamodb-lib")
 
 module.exports.handler = async (event) => {
-	const data = JSON.parse(event.body);
+	const data = event.body;
 	
 	// checking if ISBN is empty
 	if(!event.pathParameters.ISBN) {
@@ -24,7 +25,7 @@ module.exports.handler = async (event) => {
   };
 
   try {
-    const result = await dynamoDbLib.call("update", params);
+    const result = await libs.call("update", params);
     return success({ status: true });
   } catch (e) {
     return failure({ status: false });

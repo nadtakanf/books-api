@@ -22,7 +22,7 @@ provider:
 
 # custom values section
 custom:
-  booksTableName: books-${self:provider.stage}
+  booksTableName: books
   cognitoStackName: cognito
 
 plugins:
@@ -36,12 +36,13 @@ functions:
   #     domain api call
   # - authorizer: authenticate using Cognito
   book-create:
-    handler: src/book/create.handler
+    handler: src/books/create.handler
     events:
       - http:
           path: books
           method: post
           cors: true
+          integration: lambda
           authorizer:
             arn: arn:aws:cognito-idp:#{AWS::Region}:#{AWS::AccountId}:userpool/${ssm:cognito-${self:provider.region}-user-pool-id}
             
@@ -50,12 +51,13 @@ functions:
   # - method: GET request
   # - authorizer: authenticate using Cognito
   book-get:
-    handler: src/book/get.handler
+    handler: src/books/get.handler
     events:
       - http:
           path: books/{ISBN}
           method: get
           cors: true
+          integration: lambda
           authorizer:
             arn: arn:aws:cognito-idp:#{AWS::Region}:#{AWS::AccountId}:userpool/${ssm:cognito-${self:provider.region}-user-pool-id}
 
@@ -65,12 +67,13 @@ functions:
   # - method: GET request
   # - authorizer: authenticate using Cognito
   book-list:
-    handler: src/book/list.handler
+    handler: src/books/list.handler
     events:
       - http:
           path: books
           method: get
           cors: true
+          integration: lambda
           authorizer:
             arn: arn:aws:cognito-idp:#{AWS::Region}:#{AWS::AccountId}:userpool/${ssm:cognito-${self:provider.region}-user-pool-id}
 
@@ -79,12 +82,13 @@ functions:
   # - method: DELETE request
   # - authorizer: authenticate using Cognito
   book-update:
-    handler: src/book/update.handler
+    handler: src/books/update.handler
     events:
       - http:
           path: books/{ISBN}
           method: put
           cors: true
+          integration: lambda
           authorizer:
             arn: arn:aws:cognito-idp:#{AWS::Region}:#{AWS::AccountId}:userpool/${ssm:cognito-${self:provider.region}-user-pool-id}
 
@@ -93,11 +97,12 @@ functions:
     # - path: url path is /books/{id}
     # - method: DELETE request
     # - authorizer: authenticate using Cognito
-    handler: src/book/delete.handler
+    handler: src/books/delete.handler
     events:
       - http:
           path: books/{ISBN}
           method: delete
           cors: true
+          integration: lambda
           authorizer:
             arn: arn:aws:cognito-idp:#{AWS::Region}:#{AWS::AccountId}:userpool/${ssm:cognito-${self:provider.region}-user-pool-id}

@@ -48,6 +48,22 @@ Todos:
 * Config route53 and API gateway 
 * Adding SQS to yml file
 
+## Get access token from Cognito User Pool
+After deploy cognito, we have to create a user account and steps are below.
+* Creating an account in Cognito
+* ``` aws cognito-idp sign-up --region us-east-1 --client-id 7aqsqmf8v93bli7iduivba7iee --username nadtakan.jones@gmail.com --password Password123! ```
+* And confirm your account by runing command below
+* ``` aws cognito-idp admin-confirm-sign-up --profile nadtakan --region us-east-1 --user-pool-id us-east-1_JrhuNai6v --username nadtakan.jones@gmail.com ```
+* After confirm your account, we are going to use aws cli command to get idToken from cognito
+* Replacing values inside user.json(UserPoolId, ClientId, Username, Password)
+* Run ``` aws cognito-idp admin-initiate-auth --region {your-aws-region} --cli-input-json file://auth.json```
+* Copy idToken and pause that inside postman
+<img src="/images/postman.png"/>
+* Then passing json object and hit send button
+<img src="/images/complete.png"/>
+https://stackoverflow.com/questions/49063292/how-to-generate-access-token-for-an-aws-cognito-user
+https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-authentication-flow.html
+
 ## Resources
 * [Use jest-dynamodb](https://jestjs.io/docs/en/dynamodb)
 * [Javascript Best Practices](https://github.com/goldbergyoni/javascript-testing-best-practices/blob/master/readme.md#section-5%EF%B8%8F%E2%83%A3-ci-and-other-quality-measures)

@@ -22,8 +22,8 @@ resources:
       Properties:
         ClientName: cognito-apigateway
         ExplicitAuthFlows:
-          - ALLOW_USER_PASSWORD_AUTH
-          - ALLOW_REFRESH_TOKEN_AUTH
+          - ADMIN_NO_SRP_AUTH
+        GenerateSecret: false
         UserPoolId:
           Ref: CognitoUserPool
 

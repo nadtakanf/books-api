@@ -1,6 +1,7 @@
 "use strict";
 
 const { success, failure } = require("../../helper/response-lib");
+const libs = require("../../helper/dynamodb-lib")
 
 module.exports.handler = async (event) => {
 
@@ -17,7 +18,7 @@ module.exports.handler = async (event) => {
   };
 
   try {
-    const result = await dynamoDbLib.call("get", params);
+    const result = await libs.call("get", params);
     if (result.Item) {
       // Return the retrieved item
       return success(result.Item);

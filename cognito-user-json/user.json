@@ -1,0 +1,9 @@
+{
+	"UserPoolId": "us-east-1_JrhuNai6v",
+	"ClientId": "7aqsqmf8v93bli7iduivba7iee",
+	"AuthFlow": "ADMIN_NO_SRP_AUTH",
+	"AuthParameters": {
+			"USERNAME": "nadtakan.jones@gmail.com",
+			"PASSWORD": "Password123!"
+	}
+}

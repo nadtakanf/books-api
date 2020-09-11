@@ -1,6 +1,7 @@
 "use strict";
 
 const { success, failure } = require("../../helper/response-lib");
+const libs = require("../../helper/dynamodb-lib")
 
 module.exports.handler = async (event) => {
 	
@@ -16,7 +17,7 @@ module.exports.handler = async (event) => {
   };
 
   try {
-    await dynamoDbLib.call("delete", params);
+    await libs.call("delete", params);
     return success({ status: true });
   } catch (e) {
     return failure({ status: false });
