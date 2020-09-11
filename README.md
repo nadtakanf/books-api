@@ -61,8 +61,7 @@ After deploy cognito, we have to create a user account and steps are below.
 <img src="/images/postman.png"/>
 * Then passing json object and hit send button
 <img src="/images/complete.png"/>
-https://stackoverflow.com/questions/49063292/how-to-generate-access-token-for-an-aws-cognito-user
-https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-authentication-flow.html
+
 
 ## Resources
 * [Use jest-dynamodb](https://jestjs.io/docs/en/dynamodb)
@@ -70,3 +69,5 @@ https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-po
 * [Serverless Pseudo Parameters](https://www.serverless.com/plugins/serverless-pseudo-parameters)
 * [Serverless Stack](https://serverless-stack.com/)
 * [Using Global Secondary Indexes in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)
+* https://stackoverflow.com/questions/49063292/how-to-generate-access-token-for-an-aws-cognito-user
+https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-authentication-flow.html
